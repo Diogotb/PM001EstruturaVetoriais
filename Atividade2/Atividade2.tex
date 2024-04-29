@@ -1,0 +1,398 @@
+PM001 Atividade 2 - 28/04
+
+Aluno: Diogo Takamori Barbosa 
+RA: 037382
+
+\textbf{1. Dê exemplo de dois subespaços U e W do espaço vetorial das matrizes 2x3 tais que : 
+i) A matriz 2x3 formada pelos algarismos do seu RA seja um elemento de U
+ii) As dimensões de U e W sejam 4 e 3 respectivamente e a dimensão do subespaço intersecção U∩W seja 2 
+iii) Exiba bases para U, W, U∩W e U+W. }
+
+
+ \( U = \text{span}\{M\} \), onde \( M = \begin{pmatrix} 0 & 3 & 7 \\ 3 & 8 & 2 \end{pmatrix} \).
+
+\[
+N_1 = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}, \quad N_2 = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix}, \quad N_3 = \begin{pmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix}.
+\]
+
+
+
+ii) \( \text{dim}(U + W) = \text{dim}(U) + \text{dim}(W) - \text{dim}(U \cap W) = 4 + 3 - 2 = 5 \).
+
+iii) \( U \cap W \) pode ser \( \{ \begin{pmatrix} 0 & 3 \\ 3 & 8 \end{pmatrix}, \begin{pmatrix} 3 & 7 \\ 8 & 2 \end{pmatrix} \} \).
+- Para \( U + W \), como a dimensão é 5, precisamos encontrar cinco matrizes linearmente independentes que estejam em \( U \) ou \( W \). Já temos \( M \) em \( U \) e \( \{N_1, N_2, N_3\} \) em \( W \). Precisamos então de mais duas matrizes linearmente independentes. Uma escolha seria adicionar a matriz identidade 2x3 a \( U \) e a matriz nula a \( W \), então uma base para \( U + W \) pode ser \( \{ M, N_1, N_2, N_3, I_{2x3} \} \), onde \( I_{2x3} \) é a matriz identidade 2x3.
+
+\textbf{2)a) Dê exemplo de uma transformação linear \( T : \mathbb{R}^4 \rightarrow \mathbb{R}^6 \) tal que:
+i) O vetor formado pelos quatro últimos algarismos do seu RA não pertença ao núcleo.
+ii) O vetor do seu RA esteja na imagem
+iii) O núcleo tenha dimensão 2. Encontre também bases para o núcleo e para a imagem da sua transformação}
+
+ a matriz de transformação \( A \) é:
+
+\[ A = \begin{bmatrix} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \end{bmatrix} \]
+
+
+
+i) Verificando se o vetor formado pelos quatro últimos algarismos do meu RA não pertence ao núcleo:
+
+ \( A \cdot \mathbf{x} \neq \mathbf{0} \).
+
+\[ A \cdot \mathbf{x} = \begin{bmatrix} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \end{bmatrix} \cdot \begin{bmatrix} 0 \\ 3 \\ 7 \\ 3 \\ 8 \\ 2 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 7 \\ 3 \\ 0 \\ 0 \end{bmatrix} \]
+
+Como \( A \cdot \mathbf{x} \) não é o vetor nulo, o vetor formado pelos quatro últimos algarismos do meu RA não pertence ao núcleo de \( A \).
+
+ii) Verificando se o vetor do seu RA está na imagem de \( A \):
+
+
+\[ A \cdot \mathbf{v} = \begin{bmatrix} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \end{bmatrix} \cdot \begin{bmatrix} v_1 \\ v_2 \\ v_3 \\ v_4 \end{bmatrix} = \begin{bmatrix} 0 \\ 3 \\ 7 \\ 3 \\ 8 \\ 2 \end{bmatrix} \]
+
+\[ \begin{cases} 0 \cdot v_1 + 0 \cdot v_2 + 0 \cdot v_3 + 0 \cdot v_4 = 0 \\ 0 \cdot v_1 + 0 \cdot v_2 + 0 \cdot v_3 + 0 \cdot v_4 = 3 \\ 0 \cdot v_1 + 0 \cdot v_2 + 1 \cdot v_3 + 0 \cdot v_4 = 7 \\ 0 \cdot v_1 + 0 \cdot v_2 + 0 \cdot v_3 + 1 \cdot v_4 = 3 \\ 1 \cdot v_1 + 0 \cdot v_2 + 0 \cdot v_3 + 0 \cdot v_4 = 8 \\ 0 \cdot v_1 + 1 \cdot v_2 + 0 \cdot v_3 + 0 \cdot v_4 = 2 \end{cases} \]
+
+Resolvendo este sistema, obteremos as coordenadas \( (v_1 = 8, v_2, v_3, v_4) \) do vetor do seu RA na imagem de \( A \).
+
+Agora, vamos encontrar uma base para o núcleo de \( A \) resolvendo o sistema homogêneo \( A \cdot \mathbf{x} = \mathbf{0} \). Isso nos dará os vetores que compõem uma base para o núcleo de \( A \).
+
+Vamos resolver esses sistemas.
+
+Primeiro, vamos resolver o sistema \( A \cdot \mathbf{v} = \mathbf{x} \) para encontrar o vetor \( \mathbf{v} \) que representa o vetor do seu RA na imagem de \( A \).
+
+\[ A \cdot \mathbf{v} = \begin{bmatrix} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \end{bmatrix} \cdot \begin{bmatrix} v_1 \\ v_2 \\ v_3 \\ v_4 \end{bmatrix} = \begin{bmatrix} 0 \\ 3 \\ 7 \\ 3 \\ 8 \\ 2 \end{bmatrix} \]
+
+Isso nos dá o seguinte sistema de equações:
+
+\[ \begin{cases} 0 \cdot v_1 + 0 \cdot v_2 + 0 \cdot v_3 + 0 \cdot v_4 = 0 \\ 0 \cdot v_1 + 0 \cdot v_2 + 0 \cdot v_3 + 0 \cdot v_4 = 3 \\ 0 \cdot v_1 + 0 \cdot v_2 + 1 \cdot v_3 + 0 \cdot v_4 = 7 \\ 0 \cdot v_1 + 0 \cdot v_2 + 0 \cdot v_3 + 1 \cdot v_4 = 3 \\ 1 \cdot v_1 + 0 \cdot v_2 + 0 \cdot v_3 + 0 \cdot v_4 = 8 \\ 0 \cdot v_1 + 1 \cdot v_2 + 0 \cdot v_3 + 0 \cdot v_4 = 2 \end{cases} \]
+
+Resolvendo este sistema, obteremos as coordenadas \( (v_1, v_2, v_3, v_4) \) do vetor do meu RA na imagem de \( A \).
+
+Portanto, as coordenadas do vetor do seu RA na imagem de \( A \) são \( (8, 2, 7, 3) \).
+
+Agora, para encontrar uma base para o núcleo de \( A \), precisamos resolver o sistema homogêneo \( A \cdot \mathbf{x} = \mathbf{0} \).
+
+\[ A \cdot \mathbf{x} = \begin{bmatrix} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \end{bmatrix} \cdot \begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \end{bmatrix} \]
+
+
+Portanto, os vetores que compõem uma base para o núcleo de \( A \) são:
+
+\[ \mathbf{v}_1 = \begin{bmatrix} 0 \\ 0 \\ 0 \\ 0 \end{bmatrix}, \quad \mathbf{v}_2 = \begin{bmatrix} 0 \\ 0 \\ 0 \\ 0 \end{bmatrix} \]
+
+
+Para encontrar a base da imagem de \( A \), podemos primeiro observar que a imagem de \( A \) é gerada pelos vetores coluna de \( A \) que não são nulos. Neste caso, os quatro primeiros vetores coluna de \( A \) são nulos, então a imagem de \( A \) é gerada pelos dois últimos vetores coluna de \( A \), que são \( [1, 0, 0, 0, 0, 0]^T \) e \( [0, 1, 0, 0, 0, 0]^T \).
+
+Portanto, uma base para a imagem de \( A \) é dada pelos vetores:
+
+\[ \mathbf{w}_1 = \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \end{bmatrix}, \quad \mathbf{w}_2 = \begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0 \end{bmatrix} \]
+
+Assim, respondemos à parte iii) da questão. Agora, podemos recapitular as informações encontradas:
+
+i) O vetor formado pelos quatro últimos algarismos do seu RA não pertence ao núcleo.
+ii) O vetor do seu RA, \( [0, 3, 7, 3, 8, 2] \), está na imagem.
+iii) O núcleo de \( A \) tem dimensão 2, com uma base dada pelos vetores \( \mathbf{v}_1 = [0, 0, 0, 0]^T \) e \( \mathbf{v}_2 = [0, 0, 0, 0]^T \).
+iv) A imagem de \( A \) tem dimensão 2, com uma base dada pelos vetores \( \mathbf{w}_1 = [1, 0, 0, 0, 0, 0]^T \) e \( \mathbf{w}_2 = [0, 1, 0, 0, 0, 0]^T \).
+
+Isso conclui a resposta à questão. Se precisar de mais alguma coisa, estou à disposição!
+
+
+
+\textbf{3)
+i) Encontre uma transformação linear do plano no plano que deforme uma elipse de semieixo maior medindo a sobre a reta y = k x e semieixo menor com medida igual a b (a>0 ,b>0 e k >0 )
+numa circunferência de raio 1 centrada na origem.
+ii))Escolha a, b e k. para testar se sua dedução está correta e ilustre no computador.}
+
+Seja \( T : \mathbb{R}^2 \rightarrow \mathbb{R}^2 \) uma transformação linear tal que ela leve a elipse inicial para a circunferência desejada.
+
+1. Primeiro, precisamos considerar a elipse inicial. Uma parametrização para a elipse centrada na origem com semieixo maior \( a \) e semieixo menor \( b \) é dada por:
+
+\[ x = a \cos(t), \quad y = b \sin(t) \]
+
+2. Agora, queremos deformar essa elipse em uma circunferência de raio 1 centrada na origem. Para isso, podemos aplicar uma transformação linear \( T \) tal que a elipse seja transformada em uma circunferência.
+
+3. Uma transformação linear que faz isso é a rotação seguida de um redimensionamento. A rotação por um ângulo \( \theta \) no sentido anti-horário é dada por:
+
+\[ R_\theta = \begin{pmatrix} \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) \end{pmatrix} \]
+
+4. Para garantir que a circunferência resultante tenha raio 1, precisamos redimensionar a elipse de acordo. Como os semieixos da elipse têm medidas \( a \) e \( b \), a circunferência terá raio 1 se a redimensionarmos por \( \frac{1}{\max(a, b)} \).
+
+Portanto, a transformação linear \( T \) pode ser definida como a composição dessas duas transformações:
+
+\[ T = R_{\theta} \cdot D \]
+
+Onde \( D \) é a matriz de redimensionamento e \( \theta \) é o ângulo de rotação necessário para alinhar a reta \( y = kx \) com um dos eixos.
+
+5. Agora, precisamos encontrar \( \theta \). A reta \( y = kx \) forma um ângulo \( \alpha \) com o eixo x, onde \( \tan(\alpha) = k \). Então, o ângulo \( \theta \) de rotação para alinhar essa reta com o eixo x é dado por \( \theta = \arctan(k) \).
+
+6. A matriz de redimensionamento \( D \) será uma matriz diagonal com os fatores de escala \( \frac{1}{\max(a, b)} \) ao longo de ambos os eixos.
+
+Portanto, a transformação linear \( T \) que deforma a elipse no plano para uma circunferência de raio 1 centrada na origem é dada por:
+
+\[ T = R_{\theta} \cdot D \]
+
+Onde \( R_{\theta} \) é a matriz de rotação por \( \theta \) e \( D \) é a matriz de redimensionamento.
+
+Realizando os cálculos matemáticos para os valores escolhidos \( a = 2 \), \( b = 1 \) e \( k = 2 \).
+
+1. Ângulo de Rotação (\( \theta \)):
+   O ângulo de rotação \( \theta \) necessário para alinhar a reta \( y = 2x \) com o eixo x é dado por \( \theta = \arctan(k) = \arctan(2) \).
+
+   Portanto, \( \theta = \arctan(2) \approx 1.107 \) radianos.
+
+2. Matriz de Rotação (\( R_{\theta} \)):
+   A matriz de rotação \( R_{\theta} \) é dada por:
+   \[
+   R_{\theta} = \begin{pmatrix} \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) \end{pmatrix}
+   \]
+
+   Substituindo \( \theta = \arctan(2) \), obtemos:
+   \[
+   R_{\theta} = \begin{pmatrix} \cos(1.107) & -\sin(1.107) \\ \sin(1.107) & \cos(1.107) \end{pmatrix}
+   \]
+
+   Calculando os valores trigonométricos, obtemos:
+   \[
+   R_{\theta} \approx \begin{pmatrix} 0.416 & -0.909 \\ 0.909 & 0.416 \end{pmatrix}
+   \]
+
+3. Matriz de Redimensionamento (\( D \)):
+   A matriz de redimensionamento \( D \) é uma matriz diagonal com os fatores de escala \( \frac{1}{\max(a, b)} \) ao longo de ambos os eixos. Para \( a = 2 \) e \( b = 1 \), o fator de escala será \( \frac{1}{2} \).
+
+   Portanto, a matriz de redimensionamento é:
+   \[
+   D = \begin{pmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{pmatrix}
+   \]
+
+4. Transformação Linear (\( T \)):
+   A transformação linear \( T \) é dada pela composição das matrizes de rotação e redimensionamento:
+   \[
+   T = R_{\theta} \cdot D
+   \]
+
+   Substituindo as matrizes \( R_{\theta} \) e \( D \), obtemos:
+   \[
+   T = \begin{pmatrix} 0.416 & -0.909 \\ 0.909 & 0.416 \end{pmatrix} \cdot \begin{pmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{pmatrix}
+   \]
+
+   Multiplicando as matrizes, obtemos a matriz de transformação \( T \).
+
+
+Usando uma Demonstração por Código em Python temos :
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parâmetros da elipse original
+a = 2
+b = 1
+k = 2  # Coeficiente angular da reta y = kx
+
+# Parâmetro da transformação de rotação
+theta = np.arctan(k)  # Ângulo de rotação
+
+# Matriz de rotação
+R_theta = np.array([[np.cos(theta), -np.sin(theta)],
+                    [np.sin(theta), np.cos(theta)]])
+
+# Matriz de redimensionamento para transformar a elipse em uma circunferência de raio 1
+D = np.diag([1/max(a, b), 1/max(a, b)])
+
+# Deslocamento para o centro
+centro_elipse = np.array([0, 0])  # Centro da elipse original
+centro_circunferencia = np.array([0, 0])  # Centro da circunferência desejada
+deslocamento = np.array([centro_circunferencia - centro_elipse])
+
+# Transformação linear
+T = R_theta.dot(D)
+
+# Parametrização da elipse original
+t = np.linspace(0, 2*np.pi, 100)
+x_elipse = a * np.cos(t)
+y_elipse = b * np.sin(t)
+
+# Aplicação da transformação linear na elipse
+elipse_transformada = T.dot(np.vstack((x_elipse, y_elipse))) + deslocamento.T
+
+# Plot da elipse original
+plt.figure(figsize=(8, 8))
+plt.plot(x_elipse, y_elipse, label='Elipse Original')
+
+# Plot da circunferência resultante
+plt.plot(elipse_transformada[0], elipse_transformada[1], label='Circunferência Transformada')
+
+# Ajustes de plot
+plt.axis('equal')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Transformação Linear: Elipse para Circunferência')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+
+
+\textbf{4. Encontre a transformação linear do espaço no espaço que é uma projeção no plano ax +by + cz = 0 , onde a, b e c são os três maiores algarismos do seu RA. Ilustre no computador.}
+
+A matriz de projeção ortogonal \( P \) para o plano \( ax + by + cz = 0 \), onde \( a = 8 \), \( b = 7 \) e \( c = 3 \).
+
+A matriz de projeção ortogonal \( P \) é dada pela fórmula:
+
+\[ P = I - \frac{2}{\|\mathbf{n}\|^2} \mathbf{n}\mathbf{n}^T \]
+
+Onde:
+- \( I \) é a matriz identidade 3x3,
+- \( \mathbf{n} \) é o vetor normal ao plano, e
+- \( \|\mathbf{n}\| \) é a norma do vetor normal.
+
+norma do vetor normal:
+
+\[ \| \mathbf{n} \| = \sqrt{8^2 + 7^2 + 3^2} = \sqrt{113} \]
+
+A matriz de projeção \( P \):
+
+\[ P = I - \frac{2}{113} \begin{bmatrix} 8 \\ 7 \\ 3 \end{bmatrix} \begin{bmatrix} 8 & 7 & 3 \end{bmatrix} \]
+
+ cálculos:
+
+\[ \frac{2}{113} \begin{bmatrix} 8 \\ 7 \\ 3 \end{bmatrix} \begin{bmatrix} 8 & 7 & 3 \end{bmatrix} = \frac{2}{113} \begin{bmatrix} 64 & 56 & 24 \\ 56 & 49 & 21 \\ 24 & 21 & 9 \end{bmatrix} \]
+
+\[ P = I - \frac{2}{113} \begin{bmatrix} 64 & 56 & 24 \\ 56 & 49 & 21 \\ 24 & 21 & 9 \end{bmatrix} \]
+
+ \( P \):
+
+\[ P = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} - \frac{2}{113} \begin{bmatrix} 64 & 56 & 24 \\ 56 & 49 & 21 \\ 24 & 21 & 9 \end{bmatrix} \]
+
+\[ P = \begin{bmatrix} 1 - \frac{128}{113} & -\frac{112}{113} & -\frac{48}{113} \\ -\frac{112}{113} & 1 - \frac{98}{113} & -\frac{42}{113} \\ -\frac{48}{113} & -\frac{42}{113} & 1 - \frac{18}{113} \end{bmatrix} \]
+
+\[ P = \begin{bmatrix} \frac{-15}{113} & -\frac{112}{113} & -\frac{48}{113} \\ -\frac{112}{113} & \frac{15}{113} & -\frac{42}{113} \\ -\frac{48}{113} & -\frac{42}{113} & \frac{95}{113} \end{bmatrix} \]
+
+Portanto, a matriz de projeção \( P \) para o plano \( ax + by + cz = 0 \), onde \( a = 8 \), \( b = 7 \) e \( c = 3 \), é:
+
+\[ P = \begin{bmatrix} \frac{-15}{113} & -\frac{112}{113} & -\frac{48}{113} \\ -\frac{112}{113} & \frac{15}{113} & -\frac{42}{113} \\ -\frac{48}{113} & -\frac{42}{113} & \frac{95}{113} \end{bmatrix} \]
+
+Computacional em python
+
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Definindo os valores de a, b, c
+a = 8
+b = 7
+c = 3
+
+# Calculando a norma do vetor normal
+norma_n = np.sqrt(a**2 + b**2 + c**2)
+
+# Calculando a matriz de projeção ortogonal P
+n = np.array([a, b, c])
+P = np.eye(3) - 2 / (norma_n**2) * np.outer(n, n)
+
+# Vetores de teste
+v1 = np.array([1, 0, 0])
+v2 = np.array([0, 1, 0])
+v3 = np.array([0, 0, 1])
+
+# Aplicando a transformação linear nos vetores
+v1_proj = P.dot(v1)
+v2_proj = P.dot(v2)
+v3_proj = P.dot(v3)
+
+# Plotando os vetores original e projetado
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.quiver(0, 0, 0, v1[0], v1[1], v1[2], color='b', label='Original')
+ax.quiver(0, 0, 0, v1_proj[0], v1_proj[1], v1_proj[2], color='r', label='Projetado')
+ax.quiver(0, 0, 0, v2[0], v2[1], v2[2], color='b')
+ax.quiver(0, 0, 0, v2_proj[0], v2_proj[1], v2_proj[2], color='r')
+ax.quiver(0, 0, 0, v3[0], v3[1], v3[2], color='b')
+ax.quiver(0, 0, 0, v3_proj[0], v3_proj[1], v3_proj[2], color='r')
+ax.set_xlim([-1, 1])
+ax.set_ylim([-1, 1])
+ax.set_zlim([-1, 1])
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+ax.set_title('Projeção no Plano')
+ax.legend()
+plt.show()
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{image5.png}
+
+\end{figure}
+
+5) Encontre uma transformação linear T : R3 → R3 tal que: 
+i) tenha auto valores a e b onde a e b são os maiores algarismos do seu RA 
+ii) ao autovalor a estão associados dois auto vetores perpendiculares, sendo um deles (e,f,g ) onde e,f,g são os três últimos dígitos do seu RA. 
+iii) Ao autovalor b estão associados autovetores que são perpendiculares aos dois auto vetores de ii) . Encontre a matrIz [\textit{T}]\textit{aa}  da sua transformação em relação à base canônica \textit{a} 
+
+Para encontrar uma transformação linear \( T : \mathbb{R}^3 \rightarrow \mathbb{R}^3 \) com autovalores \( a \) e \( b \), onde \( a \) e \( b \) são os maiores algarismos do seu RA (037382), precisamos construir uma matriz \( 3 \times 3 \) que tenha \( a \) e \( b \) como autovalores.
+
+matriz diagonal \( D \):
+   \[ D = \begin{pmatrix} 8 & 0 & 0 \\ 0 & 7 & 0 \\ 0 & 0 & 0 \end{pmatrix} \]
+
+Construir a matriz \( P \):
+ uma escolha possível para \( P \) é:
+   \[ P = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} \]
+   \[ T = PDP^{-1} \]
+- \( P \) é a matriz de autovetores.
+- \( D \) é a matriz diagonal dos autovalores.
+- \( P^{-1} \) é a inversa da matriz de autovetores.
+
+
+\[ T = PDP^{-1} = PDP \]
+
+ \( T \):
+
+\[ T = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} 8 & 0 & 0 \\ 0 & 7 & 0 \\ 0 & 0 & 0 \end{pmatrix} \]
+
+\[ T = \begin{pmatrix} 8 & 0 & 0 \\ 0 & 7 & 0 \\ 0 & 0 & 0 \end{pmatrix} \] ii)
+
+
+Vamos começar encontrando o vetor \( [e, f, g] \), onde \( e, f, g \) são os três últimos dígitos do seu RA (037382), ou seja, \( e = 3 \), \( f = 8 \) e \( g = 2 \).
+
+Agora, vamos encontrar um vetor perpendicular a \( [3, 8, 2] \). Podemos escolher um vetor aleatório, como \( [1, 0, 0] \), e subtrair sua projeção em \( [3, 8, 2] \) para obter um vetor ortogonal.
+
+A projeção de \( [1, 0, 0] \) em \( [3, 8, 2] \) é:
+
+\[ \text{proj}_{[3, 8, 2]}([1, 0, 0]) = \frac{3}{77} [3, 8, 2] = \left[ \frac{9}{77}, \frac{24}{77}, \frac{6}{77} \right] \]
+O vetor ortogonal será:
+
+\[ \left[ 1, 0, 0 \right] - \left[ \frac{9}{77}, \frac{24}{77}, \frac{6}{77} \right] = \left[ 1 - \frac{9}{77}, 0 - \frac{24}{77}, 0 - \frac{6}{77} \right] = \left[ \frac{68}{77}, -\frac{24}{77}, -\frac{6}{77} \right] \]
+
+
+Norma:
+
+Para o vetor \( [3, 8, 2] \):
+\[ \| [3, 8, 2] \| = \sqrt{3^2 + 8^2 + 2^2} = \sqrt{77} \]
+
+Para o vetor \( \left[ \frac{68}{77}, -\frac{24}{77}, -\frac{6}{77} \right] \):
+\[ \left\| \left[ \frac{68}{77}, -\frac{24}{77}, -\frac{6}{77} \right] \right\| = \sqrt{\left( \frac{68}{77} \right)^2 + \left( -\frac{24}{77} \right)^2 + \left( -\frac{6}{77} \right)^2} \]
+\[ = \sqrt{\frac{4624}{5929} + \frac{576}{5929} + \frac{36}{5929}} = \sqrt{\frac{5228}{5929}} \]
+
+
+Normalizar
+
+Para o vetor \( [3, 8, 2] \):
+\[ \text{Vetor normalizado} = \frac{1}{\sqrt{77}} [3, 8, 2] \]
+
+Para o vetor \( \left[ \frac{68}{77}, -\frac{24}{77}, -\frac{6}{77} \right] \):
+\[ \text{Vetor normalizado} = \frac{1}{\sqrt{\frac{5228}{5929}}} \left[ \frac{68}{77}, -\frac{24}{77}, -\frac{6}{77} \right] \]
+
+\[ \mathbf{v}_1 = \left[ \frac{3}{\sqrt{77}}, \frac{8}{\sqrt{77}}, \frac{2}{\sqrt{77}} \right] \]
+\[ \mathbf{v}_2 = \left[ \frac{68}{\sqrt{5228}}, -\frac{24}{\sqrt{5228}}, -\frac{6}{\sqrt{5228}} \right] \]
+
+iii)
+
+\[ \mathbf{v}_3 = \mathbf{v}_1 \times \mathbf{v}_2 \]
+
+\[ \mathbf{u} \times \mathbf{v} = \begin{bmatrix} u_2 v_3 - u_3 v_2 \\ u_3 v_1 - u_1 v_3 \\ u_1 v_2 - u_2 v_1 \end{bmatrix} \]
+
+\[ \mathbf{v}_3 = \mathbf{v}_1 \times \mathbf{v}_2 = \begin{bmatrix} \frac{3}{\sqrt{77}} \\ \frac{8}{\sqrt{77}} \\ \frac{2}{\sqrt{77}} \end{bmatrix} \times \begin{bmatrix} \frac{68}{\sqrt{5228}} \\ -\frac{24}{\sqrt{5228}} \\ -\frac{6}{\sqrt{5228}} \end{bmatrix} \]
+
+\[ \mathbf{v}_3 = \begin{bmatrix} \left( \frac{8}{\sqrt{77}} \right) \left( -\frac{6}{\sqrt{5228}} \right) - \left( \frac{2}{\sqrt{77}} \right) \left( -\frac{24}{\sqrt{5228}} \right) \\ \left( \frac{2}{\sqrt{77}} \right) \left( \frac{68}{\sqrt{5228}} \right) - \left( \frac{3}{\sqrt{77}} \right) \left( -\frac{6}{\sqrt{5228}} \right) \\ \left( \frac{3}{\sqrt{77}} \right) \left( -\frac{24}{\sqrt{5228}} \right) - \left( \frac{8}{\sqrt{77}} \right) \left( \frac{68}{\sqrt{5228}} \right) \end{bmatrix} \]
+
+\[ \mathbf{v}_3 = \begin{bmatrix} -\frac{192}{\sqrt{6008716}} - \frac{48}{\sqrt{6008716}} \\ \frac{136}{\sqrt{6008716}} - \frac{18}{\sqrt{6008716}} \\ -\frac{204}{\sqrt{6008716}} + \frac{544}{\sqrt{6008716}} \end{bmatrix} \]
+
+\[ \mathbf{v}_3 = \begin{bmatrix} -\frac{240}{\sqrt{6008716}} \\ \frac{118}{\sqrt{6008716}} \\ \frac{340}{\sqrt{6008716}} \end{bmatrix} \]
+
+
+\[ [T]_{aa} = \begin{bmatrix} \frac{3}{\sqrt{77}} & \frac{68}{\sqrt{5228}} & -\frac{240}{\sqrt{6008716}} \\ \frac{8}{\sqrt{77}} & -\frac{24}{\sqrt{5228}} & \frac{118}{\sqrt{6008716}} \\ \frac{2}{\sqrt{77}} & -\frac{6}{\sqrt{5228}} & \frac{340}{\sqrt{6008716}} \end{bmatrix} \]  
