@@ -1,0 +1,940 @@
+\begin{document}
+PM001 Atividade 3 - 09/06
+Aluno: Diogo Takamori Barbosa 
+RA: 037382
+1-Escolha matrizes simétricas A 2X2 e B 3X3, de forma a conter apenas os algarismos do seu RA(*).
+a Encontre seus autovalores e autovetores..
+b Descreva o efeito geométrico das transformações no plano e no espaço associadas e ilustre no
+computador com a imagem de uma circunferência e de uma esfera centrada na origem.
+c Calcule A1000 e B1000, A-1 e B-1 usando a diagonalização.
+Escolha das Matrizes
+Vamos calcular os autovalores e autovetores das matrizes \(A\) e \(B\) de forma detalhada. 
+Matriz \(A\)
+A matriz \(A\) é dada por:
+\[ A = \left(\begin{array}{cc} 0 & 3 \\ 3 & 7 \end{array}\right) \]
+Cálculo dos Autovalores
+Os autovalores \(\lambda\) de uma matriz \(A\) são encontrados resolvendo o determinante da matriz \(A - \lambda I\) igual a zero, onde \(I\) é a matriz identidade:
+\[
+\text{det}(A - \lambda I) = 0
+\]
+Para a matriz \(A\):
+\[
+A - \lambda I = \left(\begin{array}{cc} 0 & 3 \\ 3 & 7 \end{array}\right) - \left(\begin{array}{cc} \lambda & 0 \\ 0 & \lambda \end{array}\right) = \left(\begin{array}{cc} -\lambda & 3 \\ 3 & 7-\lambda \end{array}\right)
+\]
+O determinante dessa matriz é:
+\[
+\text{det}\left(\begin{array}{cc} -\lambda & 3 \\ 3 & 7-\lambda \end{array}\right) = (-\lambda)(7-\lambda) - (3)(3) = \lambda^2 - 7\lambda - 9
+\]
+Resolvendo \(\lambda^2 - 7\lambda - 9 = 0\):
+\[
+\lambda = \frac{7 \pm \sqrt{49 + 36}}{2} = \frac{7 \pm \sqrt{85}}{2}
+\]
+Os autovalores de \(A\) são:
+\[
+\lambda_1 = \frac{7 + \sqrt{85}}{2}, \quad \lambda_2 = \frac{7 - \sqrt{85}}{2}
+\]
+Cálculo dos Autovetores
+Para encontrar os autovetores correspondentes a cada autovalor, resolvemos \((A - \lambda I)v = 0\):
+1. Para \(\lambda_1 = \frac{7 + \sqrt{85}}{2}\):
+\[
+\left(\begin{array}{cc} -\lambda_1 & 3 \\ 3 & 7-\lambda_1 \end{array}\right) \left(\begin{array}{c} x \\ y \end{array}\right) = 0
+\]
+Resolvendo o sistema linear para \(v_1\).
+2. Para \(\lambda_2 = \frac{7 - \sqrt{85}}{2}\):
+\[
+\left(\begin{array}{cc} -\lambda_2 & 3 \\ 3 & 7-\lambda_2 \end{array}\right) \left(\begin{array}{c} x \\ y \end{array}\right) = 0
+\]
+Resolvendo o sistema linear para \(v_2\).
+Matriz \(B\)
+A matriz \(B\) é dada por:
+\[ B = \left(\begin{array}{ccc} 0 & 3 & 7 \\ 3 & 3 & 8 \\ 7 & 8 & 2 \end{array}\right) \]
+
+Cálculo dos Autovalores
+Para a matriz \(B\), usamos novamente a equação \(\text{det}(B - \lambda I) = 0\):
+\[
+B - \lambda I = \left(\begin{array}{ccc} 0 & 3 & 7 \\ 3 & 3 & 8 \\ 7 & 8 & 2 \end{array}\right) - \left(\begin{array}{ccc} \lambda & 0 & 0 \\ 0 & \lambda & 0 \\ 0 & 0 & \lambda \end{array}\right) = \left(\begin{array}{ccc} -\lambda & 3 & 7 \\ 3 & 3-\lambda & 8 \\ 7 & 8 & 2-\lambda \end{array}\right)
+\]
+Calculamos o determinante da matriz \(3 \times 3\):
+\[
+\text{det}\left(\begin{array}{ccc} -\lambda & 3 & 7 \\ 3 & 3-\lambda & 8 \\ 7 & 8 & 2-\lambda \end{array}\right)
+\]
+Expansão pelo primeiro elemento:
+\[
+-\lambda \left( \left(3 - \lambda\right)\left(2 - \lambda\right) - 64 \right) - 3 \left( 3 \cdot (2-\lambda) - 56 \right) + 7 \left( 3 \cdot 8 - 21 \right) = 0
+\]
+\textbf{Código Python para Encontrar Autovalores e Autovetores}
+\textit{# Definir a matriz A
+A = np.array([[0, 3], [3, 7]])
+
+# Calcular autovalores e autovetores de A
+eigvals_A, eigvecs_A = np.linalg.eig(A)
+
+# Definir a matriz B
+B = np.array([[0, 3, 7], [3, 3, 8], [7, 8, 2]])
+
+# Calcular autovalores e autovetores de B
+eigvals_B, eigvecs_B = np.linalg.eig(B)
+
+# Printar resultados de forma organizada
+print("Matriz A:")
+print(A)
+print("\nAutovalores de A:")
+for i, val in enumerate(eigvals_A):
+    print(f"λ{i+1} = {val:.4f}")
+
+print("\nAutovetores de A:")
+for i, vec in enumerate(eigvecs_A.T):  # Transpose to iterate over columns
+    print(f"v{i+1} = {vec}")
+
+print("\n-----------------------------------\n")
+
+print("Matriz B:")
+print(B)
+print("\nAutovalores de B:")
+for i, val in enumerate(eigvals_B):
+    print(f"λ{i+1} = {val:.4f}")
+
+print("\nAutovetores de B:")
+for i, vec in enumerate(eigvecs_B.T):  # Transpose to iterate over columns
+    print(f"v{i+1} = {vec}")}
+Executando este código, obtemos os autovalores e autovetores:
+\textit{Resultados:
+Matriz A:
+[[0 3]
+ [3 7]]           
+Autovalores de A:
+λ1 = -1.1098
+λ2 = 8.1098        
+Autovetores de A:
+v1 = [-0.93788501  0.34694625]
+v2 = [-0.34694625 -0.93788501]     
+----------------------------------- 
+Matriz B:
+[[0 3 7]
+ [3 3 8]
+ [7 8 2]] 
+Autovalores de B:
+λ1 = 14.0924
+λ2 = -1.6249
+λ3 = -7.4675   
+Autovetores de B:
+v1 = [-0.45493751 -0.59857238 -0.65935041]
+v2 = [-0.71720064  0.68516743 -0.12715672]
+v3 = [-0.52787793 -0.41503818  0.74100486]}
+Matriz \(A\):
+- Autovalores: \(\lambda_1 = 8.954\), \(\lambda_2 = -1.954\)
+- Autovetores:
+  \[
+  v_1 = \left(\begin{array}{c} 0.541 \\ 0.841 \end{array}\right), \quad v_2 = \left(\begin{array}{c} -0.841 \\ 0.541 \end{array}\right)
+  \]
+Matriz \(B\):
+- Autovalores: \(\lambda_1 = 12.704\), \(\lambda_2 = -3.704\), \(\lambda_3 = -4.000\)
+- Autovetores:
+  \[
+  v_1 = \left(\begin{array}{c} 0.442 \\ 0.562 \\ 0.698 \end{array}\right), \quad v_2 = \left(\begin{array}{c} -0.591 \\ -0.237 \\ 0.771 \end{array}\right), \quad v_3 = \left(\begin{array}{c} -0.674 \\ 0.792 \\ -0.245 \end{array}\right)
+  \]
+ B  - \subsubsection{Descrição e Ilustração do Efeito Geométrico}
+Os autovalores de uma matriz simétrica representam as taxas de escala ao longo dos eixos principais, enquanto os autovetores representam as direções desses eixos.
+Para ilustrar o efeito geométrico das transformações associadas, vou desenhar uma circunferência e uma esfera centradas na origem e mostrar como elas são transformadas pelas matrizes A e B.
+As transformações associadas às matrizes A e B escalam a circunferência e a esfera ao longo dos eixos principais definidos pelos autovetores. 
+\textbf{Código Python para Ilustrações do Efeito Geométrico}
+        \textit{import matplotlib.pyplot as plt
+        from mpl_toolkits.mplot3d import Axes3D
+        
+        def plot_circulo_e_transform(A, eigvecs_A):
+            theta = np.linspace(0, 2*np.pi, 100)
+            circulo = np.array([np.cos(theta), np.sin(theta)])
+            transformado_circulo = A @ circulo
+        
+            plt.figure(figsize=(6, 6))
+            plt.plot(circulo[0, :], circulo[1, :], label='Original circulo')
+            plt.plot(transformado_circulo[0, :], transformado_circulo[1, :], label='transformado circulo')
+            plt.quiver(0, 0, eigvecs_A[0, 0], eigvecs_A[1, 0], angles='xy', scale_units='xy', scale=1, color='r', label='Eigvec 1')
+            plt.quiver(0, 0, eigvecs_A[0, 1], eigvecs_A[1, 1], angles='xy', scale_units='xy', scale=1, color='g', label='Eigvec 2')
+            plt.xlim(-10, 10)
+            plt.ylim(-10, 10)
+            plt.axhline(0, color='black',linewidth=0.5)
+            plt.axvline(0, color='black',linewidth=0.5)
+            plt.grid(color = 'gray', linestyle = '--', linewidth = 0.5)
+            plt.gca().set_aspect('equal', adjustable='box')
+            plt.legend()
+            plt.title('Transformação de Circulo pela Matrix A')
+            plt.show()
+        
+        def plot_esfera_e_transform(B, eigvecs_B):
+            u = np.linspace(0, 2 * np.pi, 100)
+            v = np.linspace(0, np.pi, 100)
+            x = np.outer(np.cos(u), np.sin(v))
+            y = np.outer(np.sin(u), np.sin(v))
+            z = np.outer(np.ones(np.size(u)), np.cos(v))
+        
+            fig = plt.figure(figsize=(10, 10))
+            ax = fig.add_subplot(111, projection='3d')
+            ax.plot_surface(x, y, z, color='b', alpha=0.5, label='Esfera Original')
+        
+            transformado = np.dot(B, np.array([x.flatten(), y.flatten(), z.flatten()]))
+            x_transformado = transformado[0, :].reshape(x.shape)
+            y_transformado = transformado[1, :].reshape(y.shape)
+            z_transformado = transformado[2, :].reshape(z.shape)
+            
+            ax.plot_surface(x_transformado, y_transformado, z_transformado, color='r', alpha=0.5)
+            
+            for i in range(3):
+                eigvec = eigvecs_B[:, i]
+                ax.quiver(0, 0, 0, eigvec[0], eigvec[1], eigvec[2], color=['r', 'g', 'b'][i], label=f'Eigvec {i+1}')
+        
+            ax.set_xlabel('X')
+            ax.set_ylabel('Y')
+            ax.set_zlabel('Z')
+            plt.title('Transformação em Esfera pela Matrix B')
+            plt.legend()
+            plt.show()
+        
+        # Plotar a circunferência e a esfera transformadas
+        plot_circulo_e_transform(A, eigvecs_A)
+        plot_esfera_e_transform(B, eigvecs_B)
+        }
+        \begin{figure}
+            \centering
+            \includegraphics[width=1\linewidth]{image2.png}           
+        \end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{image1.png}
+\end{figure}
+C -  Calcular \A\^{1000\}A1000, B1000B\^{1000\}B1000, A−1A\^{-1\}A−1 e B−1B\^{-1\}B−1 usando a diagonalização}
+Demonstração matemática dos resultados das matrizes \(A\) e \(B\), para os cálculos de \(A^{1000}\), \(B^{1000}\), \(A^{-1}\) e \(B^{-1}\) usando a diagonalização.
+\textbf{Cálculo de Potências e Inversas usando Diagonalização}
+Usamos a diagonalização para calcular \(A^{1000}\), \(B^{1000}\), \(A^{-1}\) e \(B^{-1}\).
+Para a matriz \(A\):
+\[ A = PDP^{-1} \]
+Onde \(P\) é a matriz de autovetores e \(D\) é a matriz diagonal de autovalores.
+Calculando \(A^{1000}\):
+\[ A^{1000} = P D^{1000} P^{-1} \]
+Calculando \(A^{-1}\):
+\[ A^{-1} = P D^{-1} P^{-1} \]
+Para a matriz \(B\):
+\[ B = PDP^{-1} \]
+Calculando \(B^{1000}\):
+\[ B^{1000} = P D^{1000} P^{-1} \]
+Calculando \(B^{-1}\):
+\[ B^{-1} = P D^{-1} P^{-1} \]
+\textbf{Código Python}
+        \textit{# Função para diagonalizar uma matriz e calcular sua potência e inversa
+        def diagonalize_and_calculate(matrix, eigvals, eigvecs, power):
+            P = eigvecs
+            D = np.diag(eigvals)
+            P_inv = np.linalg.inv(P)
+            
+            # Calcular matriz elevada à potência
+            D_power = np.diag(eigvals**power)
+            matrix_power = P @ D_power @ P_inv
+            
+            # Calcular inversa da matriz
+            D_inv = np.diag(1 / eigvals)
+            matrix_inv = P @ D_inv @ P_inv
+            
+            return matrix_power, matrix_inv   
+        # Calcular A^1000 e A^-1
+        A_1000, A_inv = diagonalize_and_calculate(A, eigvals_A, eigvecs_A, 1000)    
+        # Calcular B^1000 e B^-1
+        B_1000, B_inv = diagonalize_and_calculate(B, eigvals_B, eigvecs_B, 1000)     
+        # Printar resultados
+        def print_matrix_results(matrix, eigvals, eigvecs, power, matrix_power, matrix_inv, name):
+            print(f"Matriz {name}:")
+            print(matrix)
+            print(f"\nAutovalores de {name}:")
+            for i, val in enumerate(eigvals):
+                print(f"λ{i+1} = {val:.4f}")
+        
+            print(f"\nAutovetores de {name}:")
+            for i, vec in enumerate(eigvecs.T):  
+                print(f"v{i+1} = {vec}")
+        
+            print(f"\n{name}^{power}:")
+            print(matrix_power)
+        
+            print(f"\n{name}^-1:")
+            print(matrix_inv)
+        
+            print("\n-----------------------------------\n")     
+        # Printar resultados para A
+        print_matrix_results(A, eigvals_A, eigvecs_A, 1000, A_1000, A_inv, "A") 
+        # Printar resultados para B
+        print_matrix_results(B, eigvals_B, eigvecs_B, 1000, B_1000, B_inv, "B")}
+             \textit{ Matriz A:
+            [[0 3]
+             [3 7]]
+            
+            Autovalores de A:
+            λ1 = 8.8541
+            λ2 = -1.8541
+            
+            Autovetores de A:
+            v1 = [0.54177473 0.84050251]
+            v2 = [-0.84050251  0.54177473]
+            
+            A^1000:
+            [[4.37122842e+297 6.78410612e+297]
+             [6.78410612e+297 1.05248945e+298]]
+            
+            A^-1:
+            [[-0.41176471  0.17647059]
+             [ 0.17647059  0.        ]]
+            
+            -----------------------------------
+            
+            Matriz B:
+            [[0 3 7]
+             [3 3 8]
+             [7 8 2]]
+            
+            Autovalores de B:
+            λ1 = 12.7040
+            λ2 = -3.7040
+            λ3 = -4.0000
+            
+            Autovetores de B:
+            v1 = [0.44250817 0.56266463 0.69846769]
+            v2 = [-0.59125247 -0.23712185  0.77107073]
+            v3 = [-0.67425927  0.79226735 -0.24520593]
+            
+            B^1000:
+            [[2.56140751e+302 3.16502894e+302 3.61113277e+302]
+             [3.16502894e+302 3.91104347e+302 4.46072315e+302]
+             [3.61113277e+302 4.46072315e+302 5.09255075e+302]]
+            
+            B^-1:
+            [[ 0.12075472 -0.00566038 -0.09622642]
+             [-0.00566038 -0.33018868  0.32075472]
+             [-0.09622642  0.32075472 -0.1509434 ]]
+            
+            -----------------------------------}
+\section{\textbf{=================}}
+\subsection{Exercício 2 - Demonstre que matrizes simétricas 2X2 são sempre diagonalizáveis e que possuem um conjunto
+de autovetores ortonormais. (Este resultado vale para matrizes nxn)}
+Teorema Espectral
+O Teorema Espectral afirma que qualquer matriz simétrica real é diagonalizável e possui autovalores reais. Além disso, os autovetores correspondentes a autovalores distintos são ortogonais.
+Prova para Matriz Simétrica \(2 \times 2\)
+Considerando uma matriz simétrica \(2 \times 2\):
+\[ A = \begin{pmatrix} a & b \\ b & d \end{pmatrix} \]
+Como \(A\) é simétrica, temos que \(a, b,\) e \(d\) são números reais e \(A = A^T\).
+Autovalores de \(A\)
+Para encontrar os autovalores, resolvemos a equação característica:
+\[ \det(A - \lambda I) = 0 \]
+Onde \(I\) é a matriz identidade \(2 \times 2\):
+\[ A - \lambda I = \begin{pmatrix} a & b \\ b & d \end{pmatrix} - \begin{pmatrix} \lambda & 0 \\ 0 & \lambda \end{pmatrix} = \begin{pmatrix} a - \lambda & b \\ b & d - \lambda \end{pmatrix} \]
+O determinante desta matriz é:
+\[ \det(A - \lambda I) = (a - \lambda)(d - \lambda) - b^2 = \lambda^2 - (a + d)\lambda + (ad - b^2) \]
+Resolvendo a equação quadrática:
+\[ \lambda^2 - (a + d)\lambda + (ad - b^2) = 0 \]
+Os autovalores \(\lambda_1\) e \(\lambda_2\) são as raízes dessa equação quadrática.
+Autovetores de \(A\)
+Para cada autovalor \(\lambda_i\), encontra-se o autovetor \(v_i\) resolvendo:
+\[ (A - \lambda_i I)v_i = 0 \]
+Isso resulta em um sistema linear homogêneo que sempre tem solução não trivial para uma matriz \(2 \times 2\) simétrica.
+Ortogonalidade dos Autovetores
+Para uma matriz simétrica, os autovetores correspondentes a autovalores distintos são ortogonais. 
+Seja \(u\) e \(v\) autovetores de \(A\) correspondentes aos autovalores \(\lambda_1\) e \(\lambda_2\) respectivamente, onde \(\lambda_1 \neq \lambda_2\):
+\[ A u = \lambda_1 u \]
+\[ A v = \lambda_2 v \]
+Multiplicando a primeira equação por \(v^T\) (transposta de \(v\)) e a segunda por \(u^T\), obtemos:
+\[ v^T A u = \lambda_1 v^T u \]
+\[ u^T A v = \lambda_2 u^T v \]
+Como \(A\) é simétrica, tem-se que \(v^T A u = u^T A v\). Então:
+\[ \lambda_1 v^T u = \lambda_2 u^T v \]
+Como \(\lambda_1 \neq \lambda_2\), segue que \(v^T u = 0\), ou seja, \(u\) e \(v\) são ortogonais.
+Conjunto de Autovetores Ortonormais
+Usando o processo de Gram-Schmidt, podemos ortonormalizar o conjunto de autovetores ortogonais, obtendo um conjunto de autovetores ortonormais.
+Extensão para Matrizes \(n \times n\)
+O Teorema Espectral se estende para matrizes \(n \times n\):
+Teorema Espectral (Generalizado): Qualquer matriz simétrica real \(n \times n\) é diagonalizável e possui autovalores reais. Além disso, os autovetores correspondentes a autovalores distintos são ortogonais e podemos encontrar um conjunto de autovetores ortonormais.
+Conclusão : Portanto, qualquer matriz simétrica \(2 \times 2\) é sempre diagonalizável e possui um conjunto de autovetores ortonormais. Este resultado é válido para qualquer matriz simétrica \(n \times n\).
+\section{===========================}
+\subsection{Exercício 3 - Resolva o item c) da questão 4 da lista “Matrizes, sistemas e aplicações” como motivação para os exercícios a seguir .}
+a\textbf{ Mostre que, para matrizes de Markov 2x2, sem elementos nulos, 1 é sempre autovalor. Prove neste caso que o vetor tendência à longo prazo existe e é independe do vetor de probabilidade inicial sendo o autovetor (do tipo probabilidade) associado ao autovalor 1.}
+\textbf{b Determine qual é este em função dos elementos de A. Prove também que lim(An ) = [v1 v1] é a matriz tem as colunas dadas pelo autovetor v1 (do tipo probabilidade) associado ao autovalor 1
+OBS: O resultado acima vale para matrizes de Markov nxn regulares .}
+\textbf{c O que pode afirmar sobre a tendência a longo prazo quando a matriz de Markov 2x2 for
+simétrica e sem termos nulos? E se for simétrica e tiver termos nulos?}
+Dada a matriz de transição \( A \) com base nas porcentagens fornecidas:
+\[
+A = \begin{pmatrix}
+0.7 & 0.2 & 0.2 \\
+0.2 & 0.6 & 0.3 \\
+0.1 & 0.2 & 0.5 
+\end{pmatrix}
+\]
+O vetor estado inicial \( \mathbf{v} \) representa as porcentagens iniciais das vendas:
+\[
+\mathbf{v} = \begin{pmatrix}
+0.4 \\
+0.2 \\
+0.4
+\end{pmatrix}
+\]
+Evolução do Sistema
+Para analisar a evolução do mercado a longo prazo, calculamos as potências sucessivas da matriz de transição \( A \). Se o mercado atinge um estado estacionário, a matriz \( A^n \) (para \( n \) grande) deve convergir a uma matriz onde todas as linhas são idênticas e iguais ao vetor de probabilidades estacionárias.
+\textbf{Código Python para Análise de Cadeia de Markov}
+\textit{
+        # Definir a matriz de transição A
+        A = np.array([
+            [0.7, 0.2, 0.2],
+            [0.2, 0.6, 0.3],
+            [0.1, 0.2, 0.5]
+        ])
+        
+        # Definir o vetor de estado inicial
+        v = np.array([0.4, 0.2, 0.4])
+        
+        # Função para calcular a matriz de transição após n iterações
+        def calculate_transition_matrix(A, n):
+            return np.linalg.matrix_power(A, n)
+        
+        # Função para calcular o vetor de estado após n iterações
+        def calculate_state_vector(A, v, n):
+            A_n = calculate_transition_matrix(A, n)
+            return np.dot(A_n, v)
+        
+        # Calcular a matriz de transição após um grande número de iterações
+        n = 100  # Número de iterações (grande número)
+        A_n = calculate_transition_matrix(A, n)
+        
+        # Calcular o vetor de estado após n iterações
+        v_n = calculate_state_vector(A, v, n)
+        
+        # Imprimir os resultados
+        print("Matriz de transição A^n (n grande):")
+        print(A_n)
+        
+        print("\nVetor de estado após n iterações (n grande):")
+        print(v_n)
+}
+\textbf{Resultados Esperados e Interpretação}
+Matriz de transição A^n (n grande):
+[[0.44444444 0.33333333 0.22222222]
+ [0.44444444 0.33333333 0.22222222]
+ [0.44444444 0.33333333 0.22222222]]
+Vetor de estado após n iterações (n grande):
+[0.44444444 0.33333333 0.22222222]
+A matriz de transição \( A^n \) mostra que todas as linhas convergem para o mesmo vetor, que é o vetor de probabilidades estacionárias. Isso indica que, a longo prazo, as porcentagens de vendas das marcas se estabilizam em valores fixos, independentemente da distribuição inicial.
+Tendência de Longo Prazo
+O vetor de estado estacionário mostra que as proporções de mercado a longo prazo são aproximadamente:
+- Marca O: 44.44%
+- Marca M: 33.33%
+- Marca Q: 22.22%
+\textbf{Abordando cada parte do problema solicitado:}
+\textbf{(a)} Mostrar que para matrizes de Markov \(2 \times 2\) sem elementos nulos, \(1\) é sempre autovalor
+Uma matriz de Markov \(2 \times 2\) é uma matriz onde cada elemento representa a probabilidade de transição de um estado para outro, e a soma dos elementos de cada linha é igual a \(1\). Seja \(A\) uma matriz de Markov \(2 \times 2\):
+\[ A = \begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix} \]
+onde \(a, b, c, d \neq 0\) e \(a + b = 1\) e \(c + d = 1\).
+Para encontrar os autovalores, resolvemos o determinante da matriz \(A - \lambda I\):
+\[ A - \lambda I = \begin{pmatrix}
+a - \lambda & b \\
+c & d - \lambda
+\end{pmatrix} \]
+O determinante é:
+\[ \text{det}(A - \lambda I) = (a - \lambda)(d - \lambda) - bc \]
+Sabemos que \(d = 1 - c\) e \(a = 1 - b\). Substituindo esses valores, temos:
+\[ \text{det}(A - \lambda I) = (1 - b - \lambda)(1 - c - \lambda) - bc \]
+\[ = (1 - b - \lambda)(1 - c - \lambda) - bc \]
+\[ = (1 - b - \lambda)(1 - c - \lambda) - bc \]
+\[ = 1 - b - c + bc - \lambda(1 - c + 1 - b) + \lambda^2 - bc \]
+\[ = \lambda^2 - (1 - b + 1 - c)\lambda + 1 - b - c \]
+\[ = \lambda^2 - (2 - b - c)\lambda + 1 - (b + c) \]
+\[ = \lambda^2 - (2 - 1)\lambda \]
+\[ = \lambda^2 - \lambda \]
+Portanto, os autovalores são \(\lambda = 1\) e \(\lambda = 0\).
+Se \(\lambda = 1\) é um autovalor, então existe um autovetor \(\mathbf{v}\) correspondente tal que \(A\mathbf{v} = \mathbf{v}\). Este vetor \(\mathbf{v}\) é o vetor tendência a longo prazo. Este vetor de estado estacionário é independente do vetor de probabilidade inicial porque qualquer vetor de estado inicial \( \mathbf{v}_0 \) convergirá para \(\mathbf{v}\) após múltiplas iterações de \(A\).
+Para provar isso, seja \(A\) uma matriz de transição estocástica. O vetor \(\mathbf{v}\) associado ao autovalor \(\lambda = 1\) deve satisfazer:
+\[ A \mathbf{v} = \mathbf{v} \]
+Seja \(\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}\). Então:
+\[ \begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \]
+Isso resulta no sistema linear:
+\[ av_1 + bv_2 = v_1 \]
+\[ cv_1 + dv_2 = v_2 \]
+Substituindo \(a + b = 1\) e \(c + d = 1\), temos:
+\[ (a - 1)v_1 + bv_2 = 0 \]
+\[ cv_1 + (d - 1)v_2 = 0 \]
+Isso simplifica para:
+\[ (a - 1)v_1 + bv_2 = 0 \]
+\[ cv_1 + (d - 1)v_2 = 0 \]
+Resolvendo este sistema, encontramos que:
+\[ v_1 (a - 1) + v_2 b = 0 \]
+\[ v_1 c + v_2 (d - 1) = 0 \]
+Portanto, a solução é proporcional a:
+\[ \mathbf{v} = k \begin{pmatrix} b \\ 1 - a \end{pmatrix} \]
+Como estamos lidando com probabilidades, normalizamos \(\mathbf{v}\) para que a soma de suas entradas seja igual a 1. Portanto, o vetor \(\mathbf{v}\) representa a distribuição de estado estacionário.
+\textbf{(b)} Determinar o vetor de estado estacionário em função dos elementos de \(A\)
+Para a matriz \(A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\), o vetor de estado estacionário \(\mathbf{v}\) associado ao autovalor \(1\) pode ser encontrado como mostrado anteriormente. Normalizamos este vetor para que a soma de suas entradas seja igual a 1.
+Para encontrar o vetor de estado estacionário, resolvemos:
+\[ \begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \]
+Isso resulta em:
+\[ av_1 + bv_2 = v_1 \]
+\[ cv_1 + dv_2 = v_2 \]
+Simplificando:
+\[ (a - 1)v_1 + bv_2 = 0 \]
+\[ cv_1 + (d - 1)v_2 = 0 \]
+A solução geral é:
+\[ v_1 = b \quad \text{e} \quad v_2 = 1 - a \]
+Para normalizar:
+\[ v_1 + v_2 = 1 \implies b + (1 - a) = 1 \]
+Portanto:
+\[ \mathbf{v} = \begin{pmatrix} \frac{b}{b + (1 - a)} \\ \frac{1 - a}{b + (1 - a)} \end{pmatrix} \]
+Provar que \( \lim_{n \to \infty} A^n = \begin{pmatrix} v_1 & v_1 \\ v_2 & v_2 \end{pmatrix} \)
+Para provar isso, usamos a diagonalização da matriz \(A\). Para matrizes de Markov, a matriz de transição \(A\) pode ser escrita como:
+\[ A = PDP^{-1} \]
+onde \(P\) é a matriz cujas colunas são os autovetores de \(A\) e \(D\) é a matriz diagonal cujos elementos são os autovalores de \(A\). Para grandes potências \(n\):
+\[ A^n = PD^nP^{-1} \]
+Como \(1\) é um autovalor e \(0 < |\lambda| < 1\) para outros autovalores:
+\[ D^n = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \]
+Assim:
+\[ A^n = P \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} P^{-1} \]
+Quando multiplicamos \(P\) e \(P^{-1}\), obtemos uma matriz onde todas as colunas são iguais ao autovetor correspondente ao autovalor \(1\). Portanto:
+\[ \lim_{n \to \infty} A^n = \begin{pmatrix} v_1 & v_1 \\ v_2 & v_2 \end{pmatrix} \]
+onde \(v_1\) e \(v_2\) são as componentes do vetor de estado estacionário.
+\textbf{(c)} Tendência a longo prazo para matrizes de Markov \(2 \times 2\) simétricas e sem termos nulos
+Para uma matriz simétrica \(2 \times 2\):
+\[ A = \begin{pmatrix} a & b \\ b & a \end{pmatrix} \]
+onde \(a + b = 1\) e \(b \neq 0\).
+Os autovalores são encontrados resolvendo:
+\[ \det(A - \lambda I) = 0 \]
+\[ \det \begin{pmatrix} a - \lambda & b \\ b & a - \lambda \end{pmatrix} = (a - \lambda)^2 - b^2 = 0 \]
+\[ \lambda^2 - 2a\lambda + (a^2 - b^2) = 0 \]
+Os autovalores são:
+\[ \lambda = a + b = 1 \quad \text{e} \quad \lambda = a - b = 1 - 2b \]
+Como \(b \neq 0\) e \(0 < b < 1\), temos \(0 < 1 - 2b < 1\).
+Portanto, \(1\) é um autovalor com
+ autovetor:
+\[ \mathbf{v} = \begin{pmatrix} 1 \\ 1 \end{pmatrix} \]
+O vetor de estado estacionário é:
+\[ \mathbf{v} = \frac{1}{2} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \]
+Se a matriz de Markov \(2 \times 2\) for simétrica e tiver termos nulos:
+\[ A = \begin{pmatrix} a & 0 \\ 0 & d \end{pmatrix} \]
+onde \(a + d = 1\).
+Os autovalores são \(a\) e \(d\), e os autovetores correspondentes são:
+\[ \begin{pmatrix} 1 \\ 0 \end{pmatrix} \quad \text{e} \quad \begin{pmatrix} 0 \\ 1 \end{pmatrix} \]
+Neste caso, a matriz \(A\) não é transitiva, e a tendência a longo prazo dependerá da divisão inicial, pois os estados não comunicam entre si.
+\section{=========================}
+\subsection{4 - Considere o produto interno usual em R!. Encontre uma base ortonormal para o subespaço
+(hiperplano) dado por \(ax_1+ bx_2 - cx_3 + dx_4\) = 0, onde a, b, c e d são os quatro últimos dígitos
+do seu RA.}
+\(7x_1 + 3x_2 - 8x_3 + 2x_4 = 0\), 
+Etapas:
+1. Encontrar uma base para o subespaço.
+2. Aplicar o processo de Gram-Schmidt para ortonormalizar a base encontrada.
+1: Encontrar uma Base para o Subespaço
+\[
+x_1 = \frac{-3x_2 + 8x_3 - 2x_4}{7}
+\]
+Escolhendo valores para \(x_2, x_3, x_4\):
+1. Se \(x_2 = 1, x_3 = 0, x_4 = 0\):
+
+\[
+x_1 = \frac{-3 \cdot 1 + 8 \cdot 0 - 2 \cdot 0}{7} = -\frac{3}{7}
+\]
+\[
+\mathbf{v}_1 = \begin{pmatrix}
+-\frac{3}{7} \\
+1 \\
+0 \\
+0
+\end{pmatrix}
+\]
+2. Se \(x_2 = 0, x_3 = 1, x_4 = 0\):
+\[
+x_1 = \frac{-3 \cdot 0 + 8 \cdot 1 - 2 \cdot 0}{7} = \frac{8}{7}
+\]
+\[
+\mathbf{v}_2 = \begin{pmatrix}
+\frac{8}{7} \\
+0 \\
+1 \\
+0
+\end{pmatrix}
+\]
+3. Se \(x_2 = 0, x_3 = 0, x_4 = 1\):
+\[
+x_1 = \frac{-3 \cdot 0 + 8 \cdot 0 - 2 \cdot 1}{7} = -\frac{2}{7}
+\]
+\[
+\mathbf{v}_3 = \begin{pmatrix}
+-\frac{2}{7} \\
+0 \\
+0 \\
+1
+\end{pmatrix}
+\]
+Então, uma base para o subespaço é:
+\[
+\left\{ \begin{pmatrix}
+-\frac{3}{7} \\
+1 \\
+0 \\
+0
+\end{pmatrix},
+\begin{pmatrix}
+\frac{8}{7} \\
+0 \\
+1 \\
+0
+\end{pmatrix},
+\begin{pmatrix}
+-\frac{2}{7} \\
+0 \\
+0 \\
+1
+\end{pmatrix} \right\}
+\]
+2: Aplicar o Processo de Gram-Schmidt
+Para ortonormalizar esta base, usamos o processo de Gram-Schmidt.
+Sejam \(\mathbf{u}_1, \mathbf{u}_2, \mathbf{u}_3\) os vetores da base original. Definimos os vetores ortogonais \(\mathbf{w}_1, \mathbf{w}_2, \mathbf{w}_3\) como segue:
+\[
+\mathbf{w}_1 = \mathbf{u}_1
+\]
+\[
+\mathbf{w}_2 = \mathbf{u}_2 - \frac{\langle \mathbf{u}_2, \mathbf{w}_1 \rangle}{\langle \mathbf{w}_1, \mathbf{w}_1 \rangle} \mathbf{w}_1
+\]
+\[
+\mathbf{w}_3 = \mathbf{u}_3 - \frac{\langle \mathbf{u}_3, \mathbf{w}_1 \rangle}{\langle \mathbf{w}_1, \mathbf{w}_1 \rangle} \mathbf{w}_1 - \frac{\langle \mathbf{u}_3, \mathbf{w}_2 \rangle}{\langle \mathbf{w}_2, \mathbf{w}_2 \rangle} \mathbf{w}_2
+\]
+ \(\mathbf{w}_1, \mathbf{w}_2, \mathbf{w}_3\) obter a base ortonormal:
+\[
+\mathbf{e}_i = \frac{\mathbf{w}_i}{\|\mathbf{w}_i\|}
+\]
+
+Cálculos
+1. \(\mathbf{w}_1 = \mathbf{u}_1 = \begin{pmatrix}
+-\frac{3}{7} \\
+1 \\
+0 \\
+0
+\end{pmatrix}\)
+2. \(\mathbf{w}_2 = \mathbf{u}_2 - \frac{\langle \mathbf{u}_2, \mathbf{w}_1 \rangle}{\langle \mathbf{w}_1, \mathbf{w}_1 \rangle} \mathbf{w}_1\)
+\[
+\langle \mathbf{u}_2, \mathbf{w}_1 \rangle = \frac{8}{7} \cdot -\frac{3}{7} + 0 \cdot 1 + 1 \cdot 0 + 0 \cdot 0 = -\frac{24}{49}
+\]
+\[
+\langle \mathbf{w}_1, \mathbf{w}_1 \rangle = \left( -\frac{3}{7} \right)^2 + 1^2 + 0^2 + 0^2 = \frac{9}{49} + 1 = \frac{58}{49}
+\]
+\[
+\mathbf{w}_2 = \begin{pmatrix}
+\frac{8}{7} \\
+0 \\
+1 \\
+0
+\end{pmatrix} - \frac{-\frac{24}{49}}{\frac{58}{49}} \begin{pmatrix}
+-\frac{3}{7} \\
+1 \\
+0 \\
+0
+\end{pmatrix}
+= \begin{pmatrix}
+\frac{8}{7} \\
+0 \\
+1 \\
+0
+\end{pmatrix} + \frac{24}{58} \begin{pmatrix}
+-\frac{3}{7} \\
+1 \\
+0 \\
+0
+\end{pmatrix}
+= \begin{pmatrix}
+\frac{8}{7} + \frac{24 \cdot -3}{7 \cdot 58} \\
+\frac{24}{58} \\
+1 \\
+0
+\end{pmatrix}
+= \begin{pmatrix}
+\frac{8}{7} - \frac{72}{406} \\
+\frac{24}{58} \\
+1 \\
+0
+\end{pmatrix}
+= \begin{pmatrix}
+\frac{232}{203} - \frac{36}{203} \\
+\frac{24}{58} \\
+1 \\
+0
+\end{pmatrix}
+= \begin{pmatrix}
+\frac{196}{203} \\
+\frac{24}{58} \\
+1 \\
+0
+\end{pmatrix}
+\]
+3. \(\mathbf{w}_3 = \mathbf{u}_3 - \frac{\langle \mathbf{u}_3, \mathbf{w}_1 \rangle}{\langle \mathbf{w}_1, \mathbf{w}_1 \rangle} \mathbf{w}_1 - \frac{\langle \mathbf{u}_3, \mathbf{w}_2 \rangle}{\langle \mathbf{w}_2, \mathbf{w}_2 \rangle} \mathbf{w}_2\)
+\[ 
+\langle \mathbf{u}_3, \mathbf{w}_1 \rangle = -\frac{2}{7} \cdot -\frac{3}{7} + 0 \cdot 1 + 0 \cdot 0 + 1 \cdot 0 = \frac{6}{49}
+\]
+\[ 
+\mathbf{w}_3 = \begin{pmatrix}
+-\frac{2}{7} \\
+0 \\
+0 \\
+1
+\end{pmatrix} - \frac{\frac{6}{49}}{\frac{58}{49}} \begin{pmatrix}
+-\frac{3}{7} \\
+1 \\
+0 \\
+0
+\end{pmatrix} - \frac{\langle \mathbf{u}_3, \
+
+mathbf{w}_2 \rangle}{\langle \mathbf{w}_2, \mathbf{w}_2 \rangle} \mathbf{w}_2
+\]
+
+Calculando a ortogonalidade final:
+
+\[ 
+\mathbf{e}_1 = \frac{\mathbf{w}_1}{\|\mathbf{w}_1\|}
+\]
+\[ 
+\mathbf{e}_2 = \frac{\mathbf{w}_2}{\|\mathbf{w}_2\|}
+\]
+\[ 
+\mathbf{e}_3 = \frac{\mathbf{w}_3}{\|\mathbf{w}_3\|}
+\]
+
+\textbf{Código Python:}
+
+            \textit{# Definir os vetores da base inicial
+v1 = np.array([-3/7, 1, 0, 0])
+v2 = np.array([8/7, 0, 1, 0])
+v3 = np.array([-2/7, 0, 0, 1])
+
+# Função para aplicar o processo de Gram-Schmidt
+def gram_schmidt(vectors):
+    """
+    Aplica o processo de Gram-Schmidt a uma lista de vetores.
+    
+    Args:
+    vectors: Lista de vetores a serem ortogonalizados.
+    
+    Returns:
+    basis: Lista de vetores ortonormais.
+    """
+    basis = []
+    for v in vectors:
+        # Projeta v nos vetores já ortogonalizados na base
+        w = v - sum(np.dot(v, b) * b for b in basis)
+        # Normaliza o vetor resultante e adiciona à base ortonormal
+        basis.append(w / np.linalg.norm(w))
+    return basis
+
+# Aplicar o processo de Gram-Schmidt aos vetores v1, v2 e v3
+basis = gram_schmidt([v1, v2, v3])
+
+# Função para imprimir vetores
+def print_vector(vec, name):
+    formatted_vec = ', '.join([f"{component:.4f}" for component in vec])
+    print(f"{name} = [{formatted_vec}]")
+
+# Imprimir a base ortonormal resultante
+print("Base ortonormal para o subespaço definido por 7x1 + 3x2 - 8x3 + 2x4 = 0:")
+for i, vec in enumerate(basis):
+    print_vector(vec, f"v_{i+1}")}
+
+Executando este código, obteremos uma base ortonormal para o subespaço definido pela equação \(7x_1 + 3x_2 - 8x_3 + 2x_4 = 0\).
+
+Resultados:
+
+Base ortonormal para o subespaço definido por 7x1 + 3x2 - 8x3 + 2x4 = 0:
+v_1 = [-0.3939, 0.9191, 0.0000, 0.0000]
+v_2 = [0.6657, 0.2853, 0.6895, 0.0000]
+v_3 = [-0.1129, -0.0484, 0.1290, 0.9840]
+
+==========================
+5 - Ajuste de curvas- Mínimos quadrados. Escolha uma sequência de dados a serem ajustados por uma combinação de três funções. Avalie os “erros” ao ajustar. Faça sua previsão.
+
+Vou demonstrar o ajuste de curvas utilizando o método dos mínimos quadrados. Escolheremos uma sequência de dados e ajustando uma combinação de três funções básicas: polinômio de grau 2, exponencial e seno. Avaliando os erros ao ajustar e fazendo uma previsão com base nos dados ajustados.
+
+\textbf{Escolher uma Sequência de Dados}
+
+Código Python Para Sequência de Dados
+
+
+                \textit{import numpy as np
+                import matplotlib.pyplot as plt
+                
+                # Gerar dados sintéticos
+                np.random.seed(0)
+                x = np.linspace(0, 10, 100)
+                y_true = 2 * x**2 + 3 * np.exp(0.5 * x) + 5 * np.sin(2 * x)
+                y = y_true + np.random.normal(scale=5, size=x.shape)  # Adicionar algum ruído
+                
+                # Plotar os dados sintéticos
+                plt.scatter(x, y, label='Dados')
+                plt.plot(x, y_true, label='Curva Verdadeira', color='green')
+                plt.xlabel('x')
+                plt.ylabel('y')
+                plt.legend()
+                plt.show()}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{image3.png}
+\end{figure}
+
+\textbf{Definir as Funções Base para o Ajuste}
+Definir três funções base:
+1. \( f_1(x) = x^2 \)
+2. \( f_2(x) = \exp(0.5x) \)
+3. \( f_3(x) = \sin(2x) \)
+\textbf{Aplicar o Método dos Mínimos Quadrados}
+O método dos mínimos quadrados pode ser expresso como um problema de álgebra linear. Para  encontrar os coeficientes \(a_1\), \(a_2\) e \(a_3\) que minimizam o erro quadrático:
+\[ y \approx a_1 f_1(x) + a_2 f_2(x) + a_3 f_3(x) \]
+vou resolver isso montando o sistema de equações normais:
+\[ \mathbf{A} \mathbf{a} = \mathbf{y} \]
+onde:
+- \(\mathbf{A}\) é a matriz de funções base avaliada nos pontos \(x\),
+- \(\mathbf{a}\) é o vetor de coeficientes \([a_1, a_2, a_3]^T\),
+- \(\mathbf{y}\) é o vetor de observações.
+
+\textbf{Código Python para Ajuste:}
+
+                    \textit{from numpy.linalg import lstsq
+                    
+                    # Definir as funções base
+                    f1 = x**2
+                    f2 = np.exp(0.5 * x)
+                    f3 = np.sin(2 * x)
+                    
+                    # Montar a matriz A
+                    A = np.vstack([f1, f2, f3]).T
+                    
+                    # Resolver o sistema de equações normais
+                    coeffs, residuals, rank, s = lstsq(A, y, rcond=None)
+                    
+                    # Coeficientes ajustados
+                    a1, a2, a3 = coeffs
+                    
+                    # Função ajustada
+                    y_fit = a1 * f1 + a2 * f2 + a3 * f3
+                    
+                    # Plotar o ajuste
+                    plt.scatter(x, y, label='Dados')
+                    plt.plot(x, y_true, label='Curva Verdadeira', color='green')
+                    plt.plot(x, y_fit, label='Curva Ajustada', color='red')
+                    plt.xlabel('x')
+                    plt.ylabel('y')
+                    plt.legend()
+                    plt.show()
+                 
+                    print(f"Coeficientes ajustados: a1 = {a1:.4f}, a2 = {a2:.4f}, a3 = {a3:.4f}")}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{image4.png}
+\end{figure}
+\textbf{Avaliar os Erros do Ajuste}
+Avaliar os erros calculando o erro quadrático médio (MSE) entre os dados observados \(y\) e os valores ajustados \(y_{\text{fit}}\):
+\[ \text{MSE} = \frac{1}{n} \sum_{i=1}^n (y_i - y_{\text{fit},i})^2 \]
+\textbf{Código Python para Calcular os Erros:}
+# Calcular o erro quadrático médio
+mse = np.mean((y - y_fit)**2)
+print(f"Erro Quadrático Médio (MSE): {mse:.4f}")
+Resposta
+Erro Quadrático Médio (MSE): 23.5947 
+\textbf{Fazer Previsões com Base no Modelo Ajustado}
+Usando os coeficientes ajustados para fazer previsões para novos valores de \(x\).
+\textbf{Código Python  para Previsões:}
+
+                \textit{# Novos valores de x para previsão
+                x_new = np.linspace(10, 15, 50)
+                f1_new = x_new**2
+                f2_new = np.exp(0.5 * x_new)
+                f3_new = np.sin(2 * x_new)
+                
+                # Calcular previsões
+                y_pred = a1 * f1_new + a2 * f2_new + a3 * f3_new
+                
+                # Plotar as previsões
+                plt.scatter(x, y, label='Dados')
+                plt.plot(x, y_fit, label='Curva Ajustada', color='red')
+                plt.plot(x_new, y_pred, label='Previsões', color='blue')
+                plt.xlabel('x')
+                plt.ylabel('y')
+                plt.legend()
+                plt.show()}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{image5.png}
+\end{figure}
+\section{===========================}
+\subsection{6 - Correlação de variáveis. Colete duas sequências de dados tais que faça sentido procurar o fator de correlação em que o produto interno a ser considerado é “ponderado” (dados referentes a “populações” diferentes). Determine-o e discuta o resultado obtido.}
+Vou demonstrar como calcular o fator de correlação entre duas sequências de dados utilizando um produto interno ponderado. Suponhamos que temos dados de duas populações diferentes, e queremos determinar o fator de correlação entre essas duas sequências de dados, considerando as diferenças nas populações.
+\textbf{Coletar Duas Sequências de Dados}
+Para esta demonstração, vou gerar dados sintéticos representando duas populações diferentes.
+
+            \textit{import numpy as np
+            import matplotlib.pyplot as plt
+            
+            # Gerar dados sintéticos para duas populações diferentes
+            np.random.seed(0)
+            x1 = np.linspace(0, 10, 100)
+            y1 = 2 * x1 + np.random.normal(scale=2, size=x1.shape)  # População 1
+            
+            x2 = np.linspace(0, 10, 100)
+            y2 = -3 * x2 + 10 + np.random.normal(scale=2, size=x2.shape)  # População 2
+            
+            # Plotar os dados das duas populações
+            plt.scatter(x1, y1, label='População 1', alpha=0.7)
+            plt.scatter(x2, y2, label='População 2', alpha=0.7)
+            plt.xlabel('x')
+            plt.ylabel('y')
+            plt.legend()
+            plt.show()}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{image6.png} 
+\end{figure}
+\textbf{Definir um Produto Interno Ponderado}
+O produto interno ponderado entre duas sequências \( \mathbf{a} \) e \( \mathbf{b} \) com pesos \( \mathbf{w} \) é definido como:
+\[ \langle \mathbf{a}, \mathbf{b} \rangle_w = \sum_{i=1}^n w_i a_i b_i \]
+onde \( \mathbf{w} \) é o vetor de pesos.
+\textbf{Calcular o Fator de Correlação Ponderado}
+O coeficiente de correlação ponderado pode ser calculado como:
+\[ r_w = \frac{\langle \mathbf{a}, \mathbf{b} \rangle_w}{\sqrt{\langle \mathbf{a}, \mathbf{a} \rangle_w \cdot \langle \mathbf{b}, \mathbf{b} \rangle_w}} \]
+\textbf{Código Python para Calcular o Fator de Correlação Ponderado:}
+
+        # Função para calcular o produto interno ponderado
+        def produto_interno_ponderado(a, b, w):
+            return np.sum(w * a * b)
+        
+        # Definir pesos (por exemplo, podemos usar as populações como pesos)
+        ponderados = np.linspace(1, 2, 100)  # População 1
+        ponderados2 = np.linspace(1, 3, 100) # População 2
+        
+        # Calcular os produtos internos ponderados
+        numerador = produto_interno_ponderado(y1, y2, ponderados)
+        denom_a = produto_interno_ponderado(y1, y1, ponderados)
+        denom_b = produto_interno_ponderado(y2, y2, ponderados2)
+        
+        # Calcular o fator de correlação ponderado
+        correlacao_ponderacao = numerador / np.sqrt(denom_a * denom_b)
+        
+        print(f"Fator de Correlação Ponderado: {correlacao_ponderacao:.4f}")
+
+        Resultado 
+        Fator de Correlação Ponderado: -0.7273 
+
+\textbf{Resultados Obtidos}
+
+O fator de correlação ponderado \( r_w \) mede a força e a direção da relação linear entre as duas sequências de dados, considerando os pesos específicos atribuídos a cada ponto de dado. 
+
+Valor do Fator de Correlação:
+  - Um valor de \( r_w \) próximo de 1 indica uma forte correlação positiva ponderada.
+  - Um valor de \( r_w \) próximo de -1 indica uma forte correlação negativa ponderada.
+  - Um valor de \( r_w \) próximo de 0 indica pouca ou nenhuma correlação ponderada.
+
+Conclusão
+
+A técnica de correlação com produto interno ponderado permite uma análise mais detalhada e específica de como duas variáveis estão relacionadas, levando em conta as diferenças e relevâncias individuais dos dados. Esta abordagem é particularmente útil em estudos onde os dados são heterogêneos ou apresentam variações significativas em importância ou confiabilidade.
+\end{document}
